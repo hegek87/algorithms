@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ "$1" = "r" ]]; then
+	make
+fi
+
+if [[ "$1" = "m" ]]; then
+	valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ./objects/graph_matrix
+fi
+
+if [[ "$1" = "g" ]]; then
+	gdb ./objects/graph_matrix
+else
+	./objects/graph_matrix
+fi
