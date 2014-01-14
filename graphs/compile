@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [[ "$1" = "r" ]]; then
+	make
+fi
+
+if [[ "$1" = "m" ]]; then
+	make
+	valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ./objects/graph_algorithms
+fi
+
+if [[ "$1" = "d" ]]; then
+	gdb ./objects/graph_algorithms
+else
+	./objects/graph_algorithms
+fi
